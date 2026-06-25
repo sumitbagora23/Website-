@@ -1,0 +1,923 @@
+/* 
+========================================================================
+   सूर्यपुरा ग्राम विकास पोर्टल - PREMIUM CSS DESIGN SYSTEM
+   Developed by Antigravity
+========================================================================
+*/
+
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Color Palette */
+    --primary-green: #2e7d32;
+    --primary-green-rgb: 46, 125, 50;
+    --primary-green-dark: #1b5e20;
+    --accent-saffron: #f57c00;
+    --accent-saffron-rgb: 245, 124, 0;
+    --accent-saffron-light: #fff3e0;
+    --accent-gold: #ffb300;
+    --bg-light: #f8fafc;
+    --bg-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --bg-card-rgb: 255, 255, 255;
+    --border-glass: rgba(255, 255, 255, 0.6);
+    --border-glow: rgba(46, 125, 50, 0.15);
+    
+    /* Typography */
+    --font-heading: 'Tiro Devanagari Hindi', serif;
+    --font-body: 'Poppins', 'Outfit', sans-serif;
+    --font-numbers: 'Outfit', sans-serif;
+
+    /* Styling Properties */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 16px 40px rgba(46, 125, 50, 0.08);
+    --shadow-glow: 0 0 20px rgba(46, 125, 50, 0.2);
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Dark Mode Variables (Activated via class) --- */
+body.dark-mode {
+    --bg-light: #0f172a;
+    --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --bg-card: rgba(30, 41, 59, 0.85);
+    --bg-card-rgb: 30, 41, 59;
+    --border-glass: rgba(255, 255, 255, 0.08);
+    --border-glow: rgba(74, 222, 128, 0.2);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 20px rgba(74, 222, 128, 0.25);
+    --primary-green: #4ade80;
+    --primary-green-dark: #22c55e;
+    color: #f1f5f9;
+}
+
+/* --- Global Reset & Base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: #334155;
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background var(--transition-smooth), color var(--transition-fast);
+}
+
+body.dark-mode {
+    color: #cbd5e1;
+}
+
+h1, h2, h3, h4, h5, h6, .hindi-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+.numbers-font {
+    font-family: var(--font-numbers);
+    font-weight: 600;
+}
+
+/* --- Glassmorphism Card Utility --- */
+.glass-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border var(--transition-fast);
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(var(--primary-green-rgb), 0.3);
+}
+
+/* --- Top Announcement & Weather Ticker --- */
+.ticker-container {
+    background: linear-gradient(90deg, var(--primary-green-dark) 0%, var(--primary-green) 100%);
+    color: white;
+    font-size: 0.9rem;
+    padding: 8px 0;
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    z-index: 1050;
+}
+
+.ticker-wrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.ticker-title {
+    background: var(--accent-saffron);
+    padding: 2px 15px;
+    font-weight: bold;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    margin-right: 20px;
+    box-shadow: var(--shadow-sm);
+    animation: pulse-glow 2s infinite;
+    flex-shrink: 0;
+}
+
+.ticker-marquee {
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.ticker-marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 25s linear infinite;
+    font-family: var(--font-heading);
+}
+
+.ticker-marquee span:hover {
+    animation-play-state: paused;
+    cursor: pointer;
+}
+
+.ticker-weather {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 15px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+/* --- Premium Navbar --- */
+.navbar-custom {
+    background: rgba(var(--bg-card-rgb), 0.8) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-glass);
+    transition: all var(--transition-fast);
+}
+
+.navbar-custom .navbar-brand {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--primary-green) !important;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-custom .navbar-brand i {
+    filter: drop-shadow(0 2px 6px rgba(245, 124, 0, 0.4));
+    animation: float 3s ease-in-out infinite;
+}
+
+.navbar-custom .nav-link {
+    color: #475569 !important;
+    font-weight: 500;
+    padding: 8px 16px !important;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+body.dark-mode .navbar-custom .nav-link {
+    color: #cbd5e1 !important;
+}
+
+.navbar-custom .nav-link:hover, 
+.navbar-custom .nav-link.active {
+    color: var(--primary-green) !important;
+    background: rgba(var(--primary-green-rgb), 0.08);
+}
+
+.navbar-custom .nav-link.active {
+    font-weight: 700;
+}
+
+/* Theme Toggle Button */
+.btn-theme-toggle {
+    background: none;
+    border: none;
+    color: var(--accent-saffron);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background 0.2s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-theme-toggle:hover {
+    background: rgba(245, 124, 0, 0.1);
+    transform: rotate(45deg);
+}
+
+/* --- Hero Banner & Intro --- */
+.hero-glow {
+    position: relative;
+    padding: 100px 0 80px;
+    background: radial-gradient(circle at 10% 20%, rgba(var(--primary-green-rgb), 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(245, 124, 0, 0.06) 0%, transparent 40%);
+}
+
+.hero-badge {
+    background: var(--accent-saffron-light);
+    color: var(--accent-saffron);
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px dashed rgba(245, 124, 0, 0.3);
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    animation: float 4s ease-in-out infinite;
+}
+
+.hero-main-title {
+    font-size: 3.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--primary-green) 50%, var(--accent-saffron) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 24px;
+    text-shadow: 0 10px 20px rgba(0,0,0,0.02);
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #475569;
+    margin-bottom: 35px;
+    max-width: 650px;
+}
+
+body.dark-mode .hero-description {
+    color: #94a3b8;
+}
+
+/* Floating Decorative Elements */
+.vector-floating {
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.15;
+}
+
+body.dark-mode .vector-floating {
+    opacity: 0.08;
+}
+
+.vector-1 {
+    top: 15%;
+    right: 5%;
+    width: 250px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.vector-2 {
+    bottom: 10%;
+    left: 2%;
+    width: 180px;
+    animation: float 8s ease-in-out infinite-reverse;
+}
+
+/* --- Animated Stat Cards --- */
+.stat-counter-card {
+    padding: 24px;
+    text-align: center;
+    border-radius: var(--radius-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-counter-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-green) 0%, var(--accent-saffron) 100%);
+    opacity: 0.8;
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(var(--primary-green-rgb), 0.1);
+    color: var(--primary-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 16px;
+    transition: all var(--transition-fast);
+}
+
+.stat-counter-card:hover .stat-icon {
+    background: var(--primary-green);
+    color: white;
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 8px 16px rgba(var(--primary-green-rgb), 0.2);
+}
+
+.stat-number {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: var(--primary-green);
+}
+
+/* --- Interactive Portal Tabs --- */
+.tab-section {
+    display: none;
+    animation: fadeSlideIn var(--transition-smooth) forwards;
+}
+
+.tab-section.active {
+    display: block;
+}
+
+/* --- Dairy & Agri Dashboard --- */
+.dairy-stat-pill {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: var(--shadow-sm);
+}
+
+body.dark-mode .dairy-stat-pill {
+    background: rgba(15, 23, 42, 0.4);
+}
+
+.dairy-stat-val {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-green);
+}
+
+.custom-chart-container {
+    position: relative;
+    height: 250px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--border-glass);
+    padding: 15px;
+    overflow: hidden;
+}
+
+/* Real-time custom SVG Chart grid */
+.chart-grid-line {
+    stroke: rgba(0,0,0,0.05);
+    stroke-dasharray: 4,4;
+}
+
+body.dark-mode .chart-grid-line {
+    stroke: rgba(255,255,255,0.05);
+}
+
+/* --- Vidya Jyoti Portal --- */
+.school-badge {
+    background: var(--primary-green-dark);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.scholarship-row {
+    border-left: 4px solid var(--accent-saffron);
+    transition: all var(--transition-fast);
+}
+
+.scholarship-row:hover {
+    background: rgba(245, 124, 0, 0.04);
+    transform: translateX(5px);
+}
+
+.resource-card {
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    padding: 20px;
+    transition: all var(--transition-fast);
+    overflow: hidden;
+    position: relative;
+}
+
+.resource-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--primary-green);
+}
+
+.resource-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(var(--primary-green-rgb), 0.3);
+}
+
+/* --- Gram Sampark Map & Projects --- */
+.map-canvas-container {
+    background: #0f172a;
+    border-radius: var(--radius-md);
+    border: 3px solid rgba(255,255,255,0.1);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    min-height: 350px;
+}
+
+.map-node {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.map-node:hover {
+    filter: drop-shadow(0 0 12px var(--accent-gold));
+}
+
+.map-node circle {
+    animation: radar-pulse 2s infinite;
+}
+
+.map-overlay-card {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius-sm);
+    color: white;
+    padding: 16px;
+    transition: all var(--transition-fast);
+    display: none;
+    z-index: 10;
+}
+
+/* Project Timelines */
+.timeline-item {
+    position: relative;
+    padding-left: 30px;
+    border-left: 2px dashed rgba(var(--primary-green-rgb), 0.3);
+    padding-bottom: 25px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary-green);
+    border: 2px solid white;
+    box-shadow: 0 0 0 3px rgba(var(--primary-green-rgb), 0.2);
+}
+
+.timeline-item.pending::before {
+    background: var(--accent-saffron);
+    box-shadow: 0 0 0 3px rgba(var(--accent-saffron-rgb), 0.2);
+}
+
+.grievance-ticket {
+    background: rgba(255,255,255,0.6);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: all var(--transition-fast);
+}
+
+body.dark-mode .grievance-ticket {
+    background: rgba(30, 41, 59, 0.4);
+}
+
+.grievance-ticket:hover {
+    border-color: rgba(var(--primary-green-rgb), 0.3);
+    transform: scale(1.01);
+}
+
+/* --- E-Panchayat & Smart Citizen ID Generator --- */
+.id-generator-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 991px) {
+    .id-generator-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Citizen ID Visual Card */
+.digital-id-card-view {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1.58/1; /* Classic ID proportion */
+    background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 40%, #004d40 100%);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    padding: 18px;
+    box-shadow: 0 20px 45px rgba(27, 94, 32, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    transition: all var(--transition-smooth);
+}
+
+/* Hologram Overlay */
+.digital-id-card-view::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%, rgba(255,255,255,0.1) 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Wave Background Decoration */
+.digital-id-card-view::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    border-radius: 40%;
+    background: rgba(255, 179, 0, 0.15);
+    z-index: 1;
+    pointer-events: none;
+    transform: rotate(45deg);
+}
+
+.id-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    padding-bottom: 8px;
+    z-index: 3;
+}
+
+.id-card-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.id-card-gov-label {
+    text-align: right;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.85);
+}
+
+.id-card-body {
+    display: grid;
+    grid-template-columns: 85px 1fr;
+    gap: 16px;
+    align-items: center;
+    margin: 12px 0;
+    z-index: 3;
+}
+
+.id-photo-frame {
+    width: 85px;
+    height: 105px;
+    border: 2px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.id-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.id-photo-frame i {
+    font-size: 2.2rem;
+    color: rgba(255,255,255,0.5);
+}
+
+.id-details-list {
+    font-size: 0.72rem;
+    line-height: 1.5;
+}
+
+.id-detail-item {
+    margin-bottom: 4px;
+}
+
+.id-label {
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+    display: inline-block;
+    width: 75px;
+}
+
+.id-value {
+    color: white;
+    font-weight: 600;
+}
+
+.id-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 8px;
+    font-size: 0.65rem;
+    z-index: 3;
+}
+
+.id-number {
+    font-family: var(--font-numbers);
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--accent-gold);
+    letter-spacing: 1.5px;
+}
+
+.id-signature {
+    text-align: center;
+}
+
+.id-sig-image {
+    font-family: 'Tiro Devanagari Hindi', cursive;
+    font-style: italic;
+    font-size: 0.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    line-height: 1.2;
+    color: rgba(255,255,255,0.9);
+}
+
+/* Certificate Applications Tracker */
+.progress-bar-custom {
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 100px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+body.dark-mode .progress-bar-custom {
+    background: #334155;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-saffron) 0%, var(--primary-green) 100%);
+    width: 0%;
+    border-radius: 100px;
+    transition: width 1s ease-in-out;
+}
+
+/* --- Footer & Nav styling --- */
+footer {
+    background: #0f172a !important;
+    border-top: 5px solid var(--primary-green-dark);
+}
+
+.mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border-glass);
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    z-index: 1040;
+    transition: background var(--transition-smooth);
+}
+
+.mobile-nav-item {
+    text-align: center;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+    transition: all var(--transition-fast);
+}
+
+body.dark-mode .mobile-nav-item {
+    color: #94a3b8;
+}
+
+.mobile-nav-item.active {
+    color: var(--primary-green);
+    font-weight: bold;
+}
+
+.mobile-nav-item i {
+    font-size: 1.25rem;
+    transition: transform var(--transition-fast);
+}
+
+.mobile-nav-item:hover i,
+.mobile-nav-item.active i {
+    transform: translateY(-2px);
+}
+
+/* Padding to prevent content hiding behind bottom nav on mobile */
+@media (max-width: 991px) {
+    body {
+        padding-bottom: 75px;
+    }
+}
+
+/* --- Premium Animation Keyframes --- */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+
+@keyframes radar-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 179, 0, 0.5); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 179, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 179, 0, 0); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(245, 124, 0, 0.5); }
+    50% { box-shadow: 0 0 15px rgba(245, 124, 0, 0.8); }
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modal Styling */
+.modal-glass {
+    background: rgba(var(--bg-card-rgb), 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+}
+
+body.dark-mode .modal-content {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #f1f5f9;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer {
+    border-color: #334155;
+}
+
+/* General Custom buttons */
+.btn-success-premium {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+    border: none;
+    color: white !important;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(var(--primary-green-rgb), 0.2);
+    transition: all var(--transition-fast);
+}
+
+.btn-success-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(var(--primary-green-rgb), 0.35);
+    background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--primary-green) 100%);
+}
+
+.btn-accent-premium {
+    background: linear-gradient(135deg, var(--accent-saffron) 0%, #e65100 100%);
+    border: none;
+    color: white !important;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(245, 124, 0, 0.25);
+    transition: all var(--transition-fast);
+}
+
+.btn-accent-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 124, 0, 0.4);
+}
+
+.btn-outline-custom {
+    border: 2px solid var(--primary-green);
+    color: var(--primary-green) !important;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+    background: transparent;
+}
+
+.btn-outline-custom:hover {
+    background: var(--primary-green);
+    color: white !important;
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+}
+
+/* Weather icon coloring */
+.weather-icon-sun {
+    color: var(--accent-gold);
+    animation: float 2.5s ease-in-out infinite;
+}
+
+/* Input Fields styling */
+.form-control-custom {
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all var(--transition-fast);
+}
+
+body.dark-mode .form-control-custom {
+    border-color: rgba(255,255,255,0.15);
+    background: rgba(15, 23, 42, 0.6);
+    color: white;
+}
+
+.form-control-custom:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(var(--primary-green-rgb), 0.15);
+    outline: none;
+}

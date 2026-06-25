@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>सूर्यपुरा ग्राम विकास पोर्टल | Suryapura Village Portal</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- --- Top Ticker Bar --- -->
+    <div class="ticker-container">
+        <div class="container d-flex align-items-center">
+            <div class="ticker-wrap w-100">
+                <span class="ticker-title" id="ticker-badge">नवीनतम समाचार</span>
+                <div class="ticker-marquee">
+                    <span id="ticker-text">🌾 रबी फसल पंजीकरण की अंतिम तिथि 25 मई है! | 🏫 राजकीय विद्यालय में नए स्मार्ट-क्लास रूम का उद्घाटन कल! | 🥛 आज का दूध खरीद मूल्य रिकॉर्ड ₹54 प्रति लीटर पहुंचा! | 🛣️ वार्ड 4 में नया ग्राम संपर्क मार्ग बनकर तैयार!</span>
+                </div>
+                <div class="ticker-weather">
+                    <i class="fa-solid fa-sun weather-icon-sun"></i>
+                    <span id="weather-val">सूर्यपुरा: 32°C - सुहावना मौसम</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- --- Premium Navbar --- -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#home" onclick="switchTab('home')">
+                <i class="fa-solid fa-sun text-warning"></i>
+                <span id="nav-brand-text">सूर्यपुरा विकास</span>
+            </a>
+            
+            <!-- Mobile Toggle & Actions -->
+            <div class="d-flex align-items-center d-lg-none gap-2">
+                <button class="btn-theme-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon" id="theme-icon-mob"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-custom rounded-pill" onclick="toggleLanguage()" id="lang-btn-mob">EN</button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-1">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home" id="nav-home" onclick="switchTab('home')">मुख्य पृष्ठ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dairy" id="nav-dairy" onclick="switchTab('dairy')">कृषि एवं डेयरी</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education" id="nav-education" onclick="switchTab('education')">विद्या ज्योति</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#infra" id="nav-infra" onclick="switchTab('infra')">ग्राम संपर्क</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#panchayat" id="nav-panchayat" onclick="switchTab('panchayat')">ई-पंचायत</a>
+                    </li>
+                    
+                    <!-- Desktop Actions -->
+                    <li class="nav-item ms-lg-3 d-none d-lg-flex align-items-center gap-2">
+                        <button class="btn-theme-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
+                            <i class="fa-solid fa-moon" id="theme-icon-desk"></i>
+                        </button>
+                        <button class="btn btn-outline-custom rounded-pill px-3" onclick="toggleLanguage()" id="lang-btn-desk">English</button>
+                        <a class="btn btn-success-premium rounded-pill px-4" href="#" onclick="showLoginModal()" id="btn-login">नागरिक लॉगिन</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- --- Main Content (Dynamic Tab Shell) --- -->
+    <main class="container py-4">
+
+        <!-- ==================== TABS: HOME SECTION ==================== -->
+        <section id="tab-home" class="tab-section active">
+            <div class="hero-glow">
+                <!-- Floating background vectors -->
+                <svg class="vector-floating vector-1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#2E7D32" d="M40.2,-57.4C51.5,-49.2,60.1,-37.2,65.2,-23.7C70.3,-10.1,72,4.9,67.6,18.3C63.2,31.7,52.8,43.5,40.1,51.8C27.5,60.1,12.7,64.9,-1.8,67.4C-16.3,69.9,-32.7,70,-45.3,62.3C-58,54.7,-67,39.3,-71.4,23.3C-75.7,7.2,-75.4,-9.4,-69,-23.5C-62.7,-37.6,-50.2,-49.2,-37,-56.9C-23.7,-64.5,-9.9,-68.2,2.8,-72.1C15.5,-76,31.1,-80.1,40.2,-57.4Z" transform="translate(100 100)" />
+                </svg>
+                <svg class="vector-floating vector-2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#F57C00" d="M48.1,-62.7C59.3,-53.4,63.1,-35.1,64.4,-18.2C65.6,-1.3,64.3,14.3,58.3,28.8C52.3,43.3,41.7,56.7,28.1,62.6C14.5,68.5,-2.1,66.9,-18.6,62.4C-35,57.9,-51.3,50.6,-61.2,37.6C-71.1,24.6,-74.6,6,-73.2,-12.3C-71.9,-30.7,-65.7,-48.8,-52.8,-57.7C-39.9,-66.6,-20,-66.3,-1,-64.9C18,-63.5,36.9,-71.9,48.1,-62.7Z" transform="translate(100 100)" />
+                </svg>
+
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <span class="hero-badge mb-3">
+                            <i class="fa-solid fa-circle-check text-success"></i> 
+                            <span id="badge-promo-text">प्रगति की नई पहचान</span>
+                        </span>
+                        <h1 class="hero-main-title" id="hero-title">सूर्यपुरा: जहाँ परंपरा और तकनीक मिलते हैं</h1>
+                        <p class="hero-description" id="hero-subtitle">सशक्त किसान, उन्नत शिक्षा, और आपकी अपनी डिजिटल पंचायत। गाँव का समग्र विकास अब आपके हाथों में।</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <button class="btn btn-success-premium btn-lg px-4 rounded-pill" onclick="switchTab('dairy')" id="btn-explore">योजनाएं एक्सप्लोर करें</button>
+                            <button class="btn btn-outline-custom btn-lg px-4 rounded-pill" onclick="switchTab('panchayat')" id="btn-create-id">डिजिटल-ID बनाएं</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 mt-5 mt-lg-0 text-center">
+                        <img src="https://images.unsplash.com/photo-1592621385612-4d7129426394?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rural India Banner" class="img-fluid rounded-4 shadow-lg border border-3 border-white" style="max-height: 400px; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- --- Statistics Metrics Grid --- -->
+            <div class="row g-4 my-5">
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card stat-counter-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-address-card"></i>
+                        </div>
+                        <div class="stat-number numbers-font" id="stat-citizens">1,250+</div>
+                        <h6 class="fw-bold mb-0" id="stat-citizens-label">डिजिटल नागरिक ID</h6>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card stat-counter-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-cow"></i>
+                        </div>
+                        <div class="stat-number numbers-font" id="stat-milk">450+</div>
+                        <h6 class="fw-bold mb-0" id="stat-milk-label">टन दूध उत्पादन (वार्षिक)</h6>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card stat-counter-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div class="stat-number numbers-font" id="stat-edu">100%</div>
+                        <h6 class="fw-bold mb-0" id="stat-edu-label">स्मार्ट स्कूल उपस्थिति</h6>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="glass-card stat-counter-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-road"></i>
+                        </div>
+                        <div class="stat-number numbers-font" id="stat-roads">95%</div>
+                        <h6 class="fw-bold mb-0" id="stat-roads-label">ग्राम सड़क कनेक्टिविटी</h6>
+                    </div>
+                </div>
+            </div>
+
+            <!-- --- Quick Services Dashboard Grid --- -->
+            <div class="my-5">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold fs-1 text-success" id="service-sec-title">प्रमुख नागरिक सेवाएँ</h2>
+                    <p class="text-muted" id="service-sec-sub">एक क्लिक में गाँव की हर सुविधा आपके फोन पर</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="glass-card p-4 text-center h-100 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="stat-icon bg-success bg-opacity-10 text-success mb-3"><i class="fa-solid fa-cow"></i></div>
+                                <h5 class="fw-bold" id="card-agri-title">कृषि एवं डेयरी</h5>
+                                <p class="text-muted small" id="card-agri-text">फसल सलाह, खाद इन्वेंट्री और रोज़ाना दूध बिक्री का सीधा रिकॉर्ड।</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline-custom rounded-pill mt-3 w-100" onclick="switchTab('dairy')" id="card-agri-btn">रिकॉर्ड देखें</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="glass-card p-4 text-center h-100 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="stat-icon bg-warning bg-opacity-10 text-warning mb-3"><i class="fa-solid fa-school"></i></div>
+                                <h5 class="fw-bold" id="card-edu-title">विद्या ज्योति</h5>
+                                <p class="text-muted small" id="card-edu-text">गांव के स्कूलों का लाइव स्टेटस, स्कॉलरशिप और ई-लर्निंग रिसोर्स।</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline-custom rounded-pill mt-3 w-100" onclick="switchTab('education')" id="card-edu-btn">स्कूल पोर्टल</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="glass-card p-4 text-center h-100 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="stat-icon bg-info bg-opacity-10 text-info mb-3"><i class="fa-solid fa-map-location-dot"></i></div>
+                                <h5 class="fw-bold" id="card-infra-title">ग्राम संपर्क</h5>
+                                <p class="text-muted small" id="card-infra-text">नई सड़कों, पुलों और इंफ्रास्ट्रक्चर प्रोजेक्ट्स का लाइव ट्रैकिंग मैप।</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline-custom rounded-pill mt-3 w-100" onclick="switchTab('infra')" id="card-infra-btn">नक्शा देखें</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="glass-card p-4 text-center h-100 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="stat-icon bg-danger bg-opacity-10 text-danger mb-3"><i class="fa-solid fa-file-signature"></i></div>
+                                <h5 class="fw-bold" id="card-ep-title">ई-पंचायत</h5>
+                                <p class="text-muted small" id="card-ep-text">प्रमाण पत्र और सरकारी योजनाओं के लिए सिंगल-विंडो डिजिटल पहचान।</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline-custom rounded-pill mt-3 w-100" onclick="switchTab('panchayat')" id="card-ep-btn">पंचायत सेवाएँ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- --- Vision Segment --- -->
+            <div class="glass-card my-5 py-5 px-4 px-lg-5" style="border-left: 8px solid var(--primary-green-dark);">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                        <img src="https://images.unsplash.com/photo-1589923158776-cb4485d99fd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Visionary Leader" class="img-fluid rounded-4 shadow-md" style="max-height: 280px; object-fit: cover;">
+                    </div>
+                    <div class="col-lg-8 ps-lg-5">
+                        <span class="text-success fw-bold text-uppercase d-block mb-2" id="vision-badge">हमारा विज़न</span>
+                        <h2 class="fw-bold mb-4 text-dark" id="vision-title">तकनीक से सशक्त होता हर ग्रामीण परिवार</h2>
+                        <blockquote class="blockquote fs-4 text-muted fst-italic border-start border-4 border-success ps-4 mb-4" id="vision-quote">
+                            "हमारा लक्ष्य सिर्फ कंक्रीट की सड़कें बनाना नहीं है, बल्कि हर किसान, युवा और परिवार को डिजिटल हाईवे से जोड़कर आर्थिक रूप से सशक्त बनाना है।"
+                        </blockquote>
+                        <p class="fw-bold mb-0 text-success" id="vision-author">- राम सिंह, सरपंच एवं विकास दूत</p>
+                        <p class="text-muted small mb-0" id="vision-sub">सूर्यपुरा ग्राम पंचायत</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== TABS: DAIRY & AGRI SECTION ==================== -->
+        <section id="tab-dairy" class="tab-section">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="glass-card p-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+                        <div>
+                            <h2 class="text-success fw-bold mb-1" id="dairy-title">🥛 कृषि एवं डेयरी डैशबोर्ड</h2>
+                            <p class="text-muted mb-0" id="dairy-subtitle">अपने दैनिक दूध वितरण का रिकॉर्ड दर्ज करें एवं रीयल-टाइम आय देखें</p>
+                        </div>
+                        <span class="badge bg-success-subtle text-success border border-success rounded-pill px-3 py-2" id="dairy-live-val">दर: ₹40 - ₹62 / लीटर</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Dairy Log Form -->
+                <div class="col-lg-4">
+                    <div class="glass-card p-4">
+                        <h4 class="fw-bold mb-4 text-success" id="milk-log-title">दूध वितरण दर्ज करें</h4>
+                        <form id="dairy-form" onsubmit="saveMilkRecord(event)">
+                            <div class="mb-3">
+                                <label for="milk-date" class="form-label font-heading" id="lbl-milk-date">दिनांक</label>
+                                <input type="date" class="form-control form-control-custom numbers-font" id="milk-date" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="milk-shift" class="form-label font-heading" id="lbl-milk-shift">पाली (Shift)</label>
+                                <select class="form-select form-control-custom" id="milk-shift" required>
+                                    <option value="सुबह" id="opt-morning">सुबह (Morning)</option>
+                                    <option value="शाम" id="opt-evening">शाम (Evening)</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="milk-liters" class="form-label font-heading" id="lbl-milk-qty">मात्रा (लीटर)</label>
+                                <input type="number" step="0.1" class="form-control form-control-custom numbers-font" id="milk-liters" placeholder="उदा: 10.5" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="milk-fat" class="form-label font-heading" id="lbl-milk-fat">वसा (Fat %)</label>
+                                <input type="number" step="0.1" class="form-control form-control-custom numbers-font" id="milk-fat" min="3.0" max="10.0" placeholder="उदा: 4.5" required>
+                            </div>
+                            <button type="submit" class="btn btn-success-premium w-100 py-2.5 mt-2" id="btn-save-record">दर्ज करें</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Stats & Chart -->
+                <div class="col-lg-8">
+                    <!-- Metrics Row -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-4">
+                            <div class="dairy-stat-pill">
+                                <div class="stat-icon bg-success bg-opacity-10 text-success mb-0"><i class="fa-solid fa-droplet"></i></div>
+                                <div>
+                                    <div class="small text-muted" id="stat-milk-total-lbl">कुल दूध दर्ज</div>
+                                    <div class="dairy-val-wrap font-numbers"><span class="dairy-stat-val" id="dairy-total-liters">0.0</span> <small class="text-muted">L</small></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="dairy-stat-pill">
+                                <div class="stat-icon bg-warning bg-opacity-10 text-warning mb-0"><i class="fa-solid fa-chart-line"></i></div>
+                                <div>
+                                    <div class="small text-muted" id="stat-fat-avg-lbl">औसत वसा (Fat)</div>
+                                    <div class="dairy-val-wrap font-numbers"><span class="dairy-stat-val" id="dairy-avg-fat">0.0</span> <small class="text-muted">%</small></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="dairy-stat-pill">
+                                <div class="stat-icon bg-info bg-opacity-10 text-info mb-0"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                                <div>
+                                    <div class="small text-muted" id="stat-earn-lbl">कुल कमाई (अनुमानित)</div>
+                                    <div class="dairy-val-wrap font-numbers"><span class="dairy-stat-val" id="dairy-total-earnings">₹0.00</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Visual Chart Card -->
+                    <div class="glass-card p-4 mb-4">
+                        <h5 class="fw-bold mb-3 text-dark" id="chart-card-title">📈 साप्ताहिक दूध आपूर्ति चार्ट</h5>
+                        <div class="custom-chart-container d-flex align-items-end justify-content-between" id="milk-supply-chart">
+                            <!-- Injected dynamically by JS -->
+                            <div class="w-100 text-center text-muted py-5" id="chart-empty-msg">रिकॉर्ड दर्ज करते ही चार्ट यहाँ दिखाई देगा</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fertilizer Stock & Advisory Grid -->
+            <div class="row g-4 mt-2">
+                <!-- Fertilizer Inventory -->
+                <div class="col-lg-6">
+                    <div class="glass-card p-4 h-100">
+                        <h4 class="fw-bold mb-4 text-success" id="stock-title">🛒 सहकारी समिति खाद भंडार (Live Inventory)</h4>
+                        <div class="table-responsive">
+                            <table class="table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" id="th-item">सामग्री</th>
+                                        <th scope="col" id="th-stock">उपलब्ध स्टॉक</th>
+                                        <th scope="col" id="th-price">सरकारी दर</th>
+                                        <th scope="col" id="th-action">क्रिया (Action)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="fw-bold text-dark">यूरिया (Urea - 45kg Bag)</td>
+                                        <td><span class="badge bg-success" id="urea-stock">150 बोरी</span></td>
+                                        <td class="numbers-font font-weight-bold">₹266.50</td>
+                                        <td><button class="btn btn-sm btn-outline-custom rounded-pill" onclick="bookInventory('यूरिया')" id="btn-book-urea">बुक करें</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold text-dark">DAP (50kg Bag)</td>
+                                        <td><span class="badge bg-warning text-dark" id="dap-stock">35 बोरी</span></td>
+                                        <td class="numbers-font font-weight-bold">₹1350.00</td>
+                                        <td><button class="btn btn-sm btn-outline-custom rounded-pill" onclick="bookInventory('DAP')" id="btn-book-dap">बुक करें</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold text-dark">जैविक खाद (Organic Compost)</td>
+                                        <td><span class="badge bg-success" id="org-stock">420 बोरी</span></td>
+                                        <td class="numbers-font font-weight-bold">₹180.00</td>
+                                        <td><button class="btn btn-sm btn-outline-custom rounded-pill" onclick="bookInventory('जैविक खाद')" id="btn-book-org">बुक करें</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Advisory -->
+                <div class="col-lg-6">
+                    <div class="glass-card p-4 h-100">
+                        <h4 class="fw-bold mb-4 text-success" id="advisory-title">🌾 आज की कृषि व पशुपालन सलाह</h4>
+                        <div class="d-flex align-items-start gap-3 mb-4">
+                            <div class="stat-icon bg-success bg-opacity-10 text-success flex-shrink-0 mt-0"><i class="fa-solid fa-wheat-awn"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1 text-dark" id="adv-1-title">फसल सुरक्षा - रबी अनाज कटाई</h6>
+                                <p class="text-muted small mb-0" id="adv-1-desc">कटी हुई गेहूं की फसल को सुरक्षित सूखे स्थान पर रखें। नमी से बचाने के लिए तिरपाल का उपयोग करें।</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="stat-icon bg-info bg-opacity-10 text-info flex-shrink-0 mt-0"><i class="fa-solid fa-syringe"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1 text-dark" id="adv-2-title">पशु स्वास्थ्य - ग्रीष्मकालीन रखरखाव</h6>
+                                <p class="text-muted small mb-0" id="adv-2-desc">तेज़ धूप में मवेशियों को छांव में रखें। पीने के पानी में थोड़ा नमक मिलाकर दिन में 3 बार पिलाएं।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History List Table -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="glass-card p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4 class="fw-bold text-success mb-0" id="dairy-history-title">📜 वितरण इतिहास (Distribution Records)</h4>
+                            <button class="btn btn-sm btn-outline-danger rounded-pill" onclick="clearDairyRecords()" id="btn-clear-dairy">सभी हटाएं</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" id="th-h-date">दिनांक</th>
+                                        <th scope="col" id="th-h-shift">पाली</th>
+                                        <th scope="col" id="th-h-qty">मात्रा (लीटर)</th>
+                                        <th scope="col" id="th-h-fat">वसा (Fat %)</th>
+                                        <th scope="col" id="th-h-rate">दर (₹/लीटर)</th>
+                                        <th scope="col" id="th-h-total">कुल कमाई</th>
+                                        <th scope="col" id="th-h-act">क्रिया</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dairy-history-rows">
+                                    <!-- Injected dynamically by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== TABS: EDUCATION SECTION ==================== -->
+        <section id="tab-education" class="tab-section">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="glass-card p-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+                        <div>
+                            <h2 class="text-success fw-bold mb-1" id="edu-title">🏫 विद्या ज्योति - ग्राम शिक्षा मंच</h2>
+                            <p class="text-muted mb-0" id="edu-sub">डिजिटल संसाधन, लाइव उपस्थिति ट्रैकर और सरकारी छात्रवृत्ति पोर्टल</p>
+                        </div>
+                        <span class="badge bg-success-subtle text-success border border-success rounded-pill px-3 py-2" id="edu-school-name">राजकीय माध्यमिक विद्यालय, सूर्यपुरा</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats & Live School status -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-4">
+                    <div class="glass-card p-4 text-center h-100">
+                        <div class="stat-icon bg-warning bg-opacity-10 text-warning mb-3"><i class="fa-solid fa-users"></i></div>
+                        <h5 class="fw-bold mb-2 text-dark" id="edu-att-title">आज की लाइव उपस्थिति</h5>
+                        <div class="numbers-font text-warning fs-1 fw-bold mb-2">97.8%</div>
+                        <div class="progress-bar-custom mb-3">
+                            <div class="progress-fill" style="width: 97.8%;"></div>
+                        </div>
+                        <p class="text-muted small mb-0" id="edu-att-sub">कुल नामांकित छात्र: 245 | अनुपस्थित: 5</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="glass-card p-4 text-center h-100">
+                        <div class="stat-icon bg-success bg-opacity-10 text-success mb-3"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        <h5 class="fw-bold mb-2 text-dark" id="edu-smart-title">स्मार्ट क्लासरूम स्टेटस</h5>
+                        <div class="numbers-font text-success fs-1 fw-bold mb-2" id="edu-smart-val">सक्रिय</div>
+                        <p class="text-muted small mb-0" id="edu-smart-desc">सभी 3 प्रोजेक्टर और कंप्यूटर लैब कार्यरत हैं। सोलर ग्रिड 100% पावर्ड।</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="glass-card p-4 text-center h-100">
+                        <div class="stat-icon bg-info bg-opacity-10 text-info mb-3"><i class="fa-solid fa-circle-nodes"></i></div>
+                        <h5 class="fw-bold mb-2 text-dark" id="edu-net-title">हाई-स्पीड इंटरनेट</h5>
+                        <div class="numbers-font text-info fs-1 fw-bold mb-2">50 Mbps</div>
+                        <p class="text-muted small mb-0" id="edu-net-desc">भारतनेट फाइबर द्वारा ग्राम वाई-फाई चौपाल से जुड़ा मुफ्त शिक्षा कॉरिडोर।</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scholarship Board -->
+            <div class="row g-4">
+                <div class="col-lg-7">
+                    <div class="glass-card p-4 h-100">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+                            <h4 class="fw-bold text-success mb-0" id="scholar-title">🎓 छात्रवृत्ति योजनाएं (Scholarships Finder)</h4>
+                            <select class="form-select form-select-sm w-auto" id="scholarship-filter" onchange="filterScholarships()">
+                                <option value="all" id="sch-f-all">सभी कक्षाएं (All Classes)</option>
+                                <option value="primary" id="sch-f-pri">कक्षा 1-5 (Primary)</option>
+                                <option value="middle" id="sch-f-mid">कक्षा 6-8 (Middle)</option>
+                                <option value="high" id="sch-f-high">कक्षा 9-12 (High School)</option>
+                            </select>
+                        </div>
+                        
+                        <div id="scholarship-list">
+                            <!-- Card A -->
+                            <div class="p-3 mb-3 rounded-3 scholarship-row" data-grade="primary">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-1" id="sch-1-title">मेधावी छात्रा प्रोत्साहन योजना</h6>
+                                        <p class="text-muted small mb-0" id="sch-1-desc">कक्षा 1 से 5 की छात्राओं के लिए ₹1,500 वार्षिक सहायता।</p>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-custom rounded-pill" onclick="simulateScholarshipApply('मेधावी छात्रा प्रोत्साहन योजना')" id="btn-apply-sch1">लागू करें</button>
+                                </div>
+                            </div>
+                            <!-- Card B -->
+                            <div class="p-3 mb-3 rounded-3 scholarship-row" data-grade="middle">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-1" id="sch-2-title">साइकिल वितरण छात्रवृत्ति सहायता</h6>
+                                        <p class="text-muted small mb-0" id="sch-2-desc">कक्षा 6-8 के दूर-दराज से आने वाले छात्रों के लिए साइकिल क्रय हेतु ₹3,000 सहायता।</p>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-custom rounded-pill" onclick="simulateScholarshipApply('साइकिल वितरण छात्रवृत्ति सहायता')" id="btn-apply-sch2">लागू करें</button>
+                                </div>
+                            </div>
+                            <!-- Card C -->
+                            <div class="p-3 mb-3 rounded-3 scholarship-row" data-grade="high">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-1" id="sch-3-title">माध्यमिक शिक्षा बोर्ड छात्रवृत्ति</h6>
+                                        <p class="text-muted small mb-0" id="sch-3-desc">कक्षा 9-10 के गरीब एवं मेधावी छात्रों के लिए ₹5,000 वार्षिक छात्रवृत्ति।</p>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-custom rounded-pill" onclick="simulateScholarshipApply('माध्यमिक शिक्षा बोर्ड छात्रवृत्ति')" id="btn-apply-sch3">लागू करें</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-learning & Digital library -->
+                <div class="col-lg-5">
+                    <div class="glass-card p-4 h-100">
+                        <h4 class="fw-bold mb-4 text-success" id="el-title">📚 विद्या ज्योति ई-लर्निंग हब</h4>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="resource-card">
+                                    <h6 class="fw-bold mb-1 text-dark" id="el-1-title">कक्षा 1 से 8 एनसीईआरटी डिजिटल पुस्तकें</h6>
+                                    <p class="text-muted small mb-3" id="el-1-desc">हिंदी और गणित की इंटरैक्टिव ई-बुक्स डाउनलोड करें।</p>
+                                    <a href="https://ncert.nic.in/textbook.php" target="_blank" class="btn btn-sm btn-success-premium rounded-pill" id="el-1-btn"><i class="fa-solid fa-download me-1"></i> डाउनलोड करें</a>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="resource-card">
+                                    <h6 class="fw-bold mb-1 text-dark" id="el-2-title">गणित सीखें - मजेदार क्विज गेम</h6>
+                                    <p class="text-muted small mb-3" id="el-2-desc">कक्षा 5-8 के विद्यार्थियों के लिए मनोरंजक पहाड़े और बीजगणित खेल।</p>
+                                    <button class="btn btn-sm btn-success-premium rounded-pill" onclick="startMathQuiz()" id="el-2-btn"><i class="fa-solid fa-play me-1"></i> क्विज खेलें</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== TABS: INFRASTRUCTURE SECTION ==================== -->
+        <section id="tab-infra" class="tab-section">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="glass-card p-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+                        <div>
+                            <h2 class="text-success fw-bold mb-1" id="infra-title">🛣️ ग्राम संपर्क - इंफ्रास्ट्रक्चर एवं ट्रैकर</h2>
+                            <p class="text-muted mb-0" id="infra-sub">गाँव के सड़कों, स्ट्रीटलाइट्स और नल जल परियोजनाओं का रीयल-टाइम प्रोग्रेस नक्शा एवं शिकायत केंद्र</p>
+                        </div>
+                        <span class="badge bg-success-subtle text-success border border-success rounded-pill px-3 py-2" id="infra-budget-lbl">कुल विकास बजट 2026: ₹45,50,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Layout & Overlay details -->
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="glass-card p-4">
+                        <h4 class="fw-bold mb-3 text-dark" id="map-sec-title">🗺️ सूर्यपुरा ग्राम विकास लाइव मैप</h4>
+                        <p class="text-muted small mb-3" id="map-sec-desc">नीचे दिए गए मुख्य बिंदुओं (Nodes) पर क्लिक करके चालू विकास परियोजनाओं की स्थिति देखें:</p>
+                        
+                        <!-- Simulated Interactive Map using SVG -->
+                        <div class="map-canvas-container">
+                            <svg viewBox="0 0 800 500" width="100%" height="100%" class="w-100 h-100">
+                                <!-- Styled background grid/terrain patterns -->
+                                <rect width="800" height="500" fill="#1e293b"/>
+                                
+                                <!-- Decorative Road lines -->
+                                <path d="M 50 250 Q 200 150 400 250 T 750 250" fill="none" stroke="#475569" stroke-width="20" stroke-linecap="round"/>
+                                <path d="M 50 250 Q 200 150 400 250 T 750 250" fill="none" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="10, 10" stroke-linecap="round"/>
+                                
+                                <path d="M 400 80 L 400 420" fill="none" stroke="#475569" stroke-width="14" stroke-linecap="round"/>
+                                <path d="M 400 80 L 400 420" fill="none" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="8, 8" stroke-linecap="round"/>
+
+                                <text x="100" y="220" fill="#94a3b8" font-size="12" font-family="sans-serif" font-weight="bold">WARD 1</text>
+                                <text x="620" y="220" fill="#94a3b8" font-size="12" font-family="sans-serif" font-weight="bold">WARD 5</text>
+                                <text x="420" y="120" fill="#94a3b8" font-size="12" font-family="sans-serif" font-weight="bold">WARD 2</text>
+                                
+                                <!-- Node 1: Panchayat Bhawan -->
+                                <g class="map-node" onclick="showMapProjectDetails(1, 'पंचायत भवन सुदृढ़ीकरण', 'पूर्ण (Completed)', '₹4,50,000', '100%')">
+                                    <circle cx="200" cy="180" r="16" fill="#10b981"/>
+                                    <circle cx="200" cy="180" r="28" fill="#10b981" fill-opacity="0.2"/>
+                                    <i class="fa-solid fa-building"></i>
+                                    <text x="180" y="145" fill="#f8fafc" font-size="12" font-weight="bold" font-family="sans-serif">पंचायत भवन</text>
+                                </g>
+
+                                <!-- Node 2: School Solar grid -->
+                                <g class="map-node" onclick="showMapProjectDetails(2, 'राजकीय स्कूल सोलर पैनल ग्रिड', 'कार्य प्रगति पर (In Progress)', '₹8,20,000', '75%')">
+                                    <circle cx="580" cy="160" r="16" fill="#3b82f6"/>
+                                    <circle cx="580" cy="160" r="28" fill="#3b82f6" fill-opacity="0.2"/>
+                                    <text x="540" y="125" fill="#f8fafc" font-size="12" font-weight="bold" font-family="sans-serif">स्मार्ट स्कूल</text>
+                                </g>
+
+                                <!-- Node 3: Dairy Collection Point Road -->
+                                <g class="map-node" onclick="showMapProjectDetails(3, 'दुग्ध संकलन मार्ग कंक्रीटीकरण', 'कार्य प्रगति पर (In Progress)', '₹14,50,000', '40%')">
+                                    <circle cx="400" cy="250" r="16" fill="#f59e0b"/>
+                                    <circle cx="400" cy="250" r="28" fill="#f59e0b" fill-opacity="0.2"/>
+                                    <text x="350" y="220" fill="#f8fafc" font-size="12" font-weight="bold" font-family="sans-serif">डेयरी जंक्शन</text>
+                                </g>
+
+                                <!-- Node 4: Ward 4 Water pipeline -->
+                                <g class="map-node" onclick="showMapProjectDetails(4, 'हर घर जल - नल जल योजना (वार्ड 4)', 'नियोजित (Planned)', '₹18,30,000', '0%')">
+                                    <circle cx="400" cy="380" r="16" fill="#ef4444"/>
+                                    <circle cx="400" cy="380" r="28" fill="#ef4444" fill-opacity="0.2"/>
+                                    <text x="360" y="420" fill="#f8fafc" font-size="12" font-weight="bold" font-family="sans-serif">वार्ड 4 जलाशय</text>
+                                </g>
+                            </svg>
+
+                            <!-- Overlay project data box -->
+                            <div class="map-overlay-card" id="map-info-box">
+                                <h6 class="fw-bold mb-1 text-warning" id="map-proj-name">परियोजना का नाम</h6>
+                                <div class="row small g-2">
+                                    <div class="col-6"><span id="map-lbl-status">स्थिति:</span> <span id="map-proj-status" class="fw-bold">प्रगति पर</span></div>
+                                    <div class="col-6"><span id="map-lbl-budget">स्वीकृत बजट:</span> <span id="map-proj-budget" class="fw-bold">₹0</span></div>
+                                    <div class="col-12">
+                                        <div class="progress-bar-custom mt-2" style="height: 6px;">
+                                            <div class="progress-fill" id="map-proj-progress" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects timeline lists -->
+                <div class="col-lg-4">
+                    <div class="glass-card p-4 h-100">
+                        <h4 class="fw-bold mb-4 text-success" id="timeline-sec-title">📋 चालू योजनाएं (Projects List)</h4>
+                        
+                        <div class="timeline-container">
+                            <div class="timeline-item">
+                                <h6 class="fw-bold text-dark mb-1" id="t-proj-1">ग्राम संपर्क मार्ग कंक्रीटीकरण</h6>
+                                <span class="badge bg-warning text-dark mb-2" id="t-status-1">40% पूर्ण | प्रगति पर</span>
+                                <p class="text-muted small mb-0" id="t-desc-1">वार्ड 3 से डेयरी सेंटर तक 2 किमी पक्की सीसी रोड का निर्माण। लक्षित पूरा: जून 2026</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h6 class="fw-bold text-dark mb-1" id="t-proj-2">राजकीय विद्यालय सोलर पावर ग्रिड</h6>
+                                <span class="badge bg-primary text-white mb-2" id="t-status-2">75% पूर्ण | परीक्षण चरण</span>
+                                <p class="text-muted small mb-0" id="t-desc-2">स्कूल के कंप्यूटर लैब और स्मार्ट टीवी हेतु 5kW ऑफ-ग्रिड सोलर पावर स्टेशन का अधिष्ठापन।</p>
+                            </div>
+                            <div class="timeline-item pending">
+                                <h6 class="fw-bold text-dark mb-1" id="t-proj-3">हर घर नल-जल योजना (वार्ड 4)</h6>
+                                <span class="badge bg-danger text-white mb-2" id="t-status-3">नियोजित | टेंडर स्वीकृत</span>
+                                <p class="text-muted small mb-0" id="t-desc-3">वार्ड 4 के 110 परिवारों को शुद्ध पेयजल कनेक्शन प्रदान करने हेतु वाटर-टैंक व पाइपलाइन बिछाना।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grievance Submission section -->
+            <div class="row g-4 mt-2">
+                <!-- Submission Form -->
+                <div class="col-lg-5">
+                    <div class="glass-card p-4">
+                        <h4 class="fw-bold mb-4 text-success" id="g-form-title">📢 ग्राम समस्या निवारण (Grievance Portal)</h4>
+                        <p class="text-muted small mb-4" id="g-form-sub">सड़क गड्ढे, खराब स्ट्रीटलाइट या जलभराव से जुड़ी समस्या की शिकायत करें।</p>
+                        
+                        <form id="grievance-form" onsubmit="submitGrievance(event)">
+                            <div class="mb-3">
+                                <label for="g-name" class="form-label font-heading" id="lbl-g-name">आपका नाम</label>
+                                <input type="text" class="form-control form-control-custom" id="g-name" placeholder="उदा: राम सिंह" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="g-type" class="form-label font-heading" id="lbl-g-type">समस्या का प्रकार</label>
+                                <select class="form-select form-control-custom" id="g-type" required>
+                                    <option value="खराब स्ट्रीटलाइट" id="opt-g-1">खराब स्ट्रीटलाइट (Broken Streetlight)</option>
+                                    <option value="सड़क के गड्ढे" id="opt-g-2">सड़क के गड्ढे (Potholes/Road Damage)</option>
+                                    <option value="पेयजल पाइपलाइन लीक" id="opt-g-3">पेयजल पाइपलाइन लीक (Water Pipe Leakage)</option>
+                                    <option value="अन्य समस्या" id="opt-g-4">अन्य समस्या (Other Grievance)</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="g-desc" class="form-label font-heading" id="lbl-g-desc">समस्या का विवरण</label>
+                                <textarea class="form-control form-control-custom" id="g-desc" rows="3" placeholder="वार्ड नंबर और समस्या की जगह का विस्तृत विवरण दर्ज करें..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-accent-premium w-100 py-2.5 mt-2" id="btn-submit-g">शिकायत दर्ज करें</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Active Tickets Board -->
+                <div class="col-lg-7">
+                    <div class="glass-card p-4 h-100">
+                        <h4 class="fw-bold mb-4 text-success" id="g-board-title">💬 नागरिक शिकायतें एवं निवारण बोर्ड</h4>
+                        
+                        <div id="grievance-feed" style="max-height: 420px; overflow-y: auto; padding-right: 5px;">
+                            <!-- Injected dynamically by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== TABS: E-PANCHAYAT SECTION ==================== -->
+        <section id="tab-panchayat" class="tab-section">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="glass-card p-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+                        <div>
+                            <h2 class="text-success fw-bold mb-1" id="ep-title">🏛️ ई-पंचायत डिजिटल सिंगल विंडो</h2>
+                            <p class="text-muted mb-0" id="ep-sub">अपनी डिजिटल पहचान (Citizen Smart ID Card) बनाएं और सरकारी प्रमाण-पत्रों के लिए ऑनलाइन आवेदन करें</p>
+                        </div>
+                        <span class="badge bg-success-subtle text-success border border-success rounded-pill px-3 py-2" id="ep-status-val">सशक्त डिजिटल नागरिक</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ID Generator Layout -->
+            <div class="row g-4 mb-5">
+                <div class="col-12">
+                    <div class="glass-card p-4">
+                        <h3 class="fw-bold text-success mb-4" id="id-sec-title">🪪 सूर्यपुरा डिजिटल नागरिक ID कार्ड जनरेटर</h3>
+                        
+                        <div class="id-generator-layout">
+                            <!-- Form input column -->
+                            <div>
+                                <form id="id-form" oninput="updateDigitalID()">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="id-input-name" class="form-label font-heading" id="lbl-id-name">पूरा नाम (Full Name)</label>
+                                            <input type="text" class="form-control form-control-custom" id="id-input-name" placeholder="उदा: रमेश कुमार" value="रमेश कुमार" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="id-input-father" class="form-label font-heading" id="lbl-id-father">पिता का नाम (Father Name)</label>
+                                            <input type="text" class="form-control form-control-custom" id="id-input-father" placeholder="उदा: राम सिंह" value="राम सिंह" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="id-input-aadhaar" class="form-label font-heading" id="lbl-id-aadhaar">आधार संख्या (अंतिम 4 अंक)</label>
+                                            <input type="text" class="form-control form-control-custom numbers-font" id="id-input-aadhaar" maxlength="4" placeholder="उदा: 9876" value="9876" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="id-input-ward" class="form-label font-heading" id="lbl-id-ward">वार्ड नंबर (Ward No.)</label>
+                                            <select class="form-select form-control-custom" id="id-input-ward" required>
+                                                <option value="वार्ड 1">वार्ड 1 (Ward 1)</option>
+                                                <option value="वार्ड 2">वार्ड 2 (Ward 2)</option>
+                                                <option value="वार्ड 3">वार्ड 3 (Ward 3)</option>
+                                                <option value="वार्ड 4">वार्ड 4 (Ward 4)</option>
+                                                <option value="वार्ड 5">वार्ड 5 (Ward 5)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="id-input-role" class="form-label font-heading" id="lbl-id-role">व्यवसाय / श्रेणी</label>
+                                            <input type="text" class="form-control form-control-custom" id="id-input-role" placeholder="उदा: उन्नत किसान" value="किसान एवं पशुपालक" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="id-input-pic" class="form-label font-heading" id="lbl-id-pic">फोटो अपलोड करें (Photo)</label>
+                                            <input type="file" class="form-control form-control-custom" id="id-input-pic" accept="image/*" onchange="loadCitizenPhoto(event)">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Live visual card output column -->
+                            <div class="d-flex flex-column align-items-center justify-content-center">
+                                <div class="digital-id-card-view mb-4" id="visual-id-card">
+                                    <div class="id-card-header">
+                                        <div class="id-card-logo">
+                                            <i class="fa-solid fa-sun text-warning"></i>
+                                            <span>SURYAPURA SMART CARD</span>
+                                        </div>
+                                        <div class="id-card-gov-label">
+                                            ग्राम पंचायत सूर्यपुरा
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="id-card-body">
+                                        <div class="id-photo-frame">
+                                            <!-- Default icon or uploaded image -->
+                                            <img id="card-photo" src="" style="display: none;">
+                                            <i class="fa-solid fa-user-tie" id="card-photo-placeholder"></i>
+                                        </div>
+                                        <div class="id-details-list">
+                                            <div class="id-detail-item">
+                                                <span class="id-label" id="lbl-c-name">नाम:</span>
+                                                <span class="id-value" id="card-name">रमेश कुमार</span>
+                                            </div>
+                                            <div class="id-detail-item">
+                                                <span class="id-label" id="lbl-c-father">पिता:</span>
+                                                <span class="id-value" id="card-father">राम सिंह</span>
+                                            </div>
+                                            <div class="id-detail-item">
+                                                <span class="id-label" id="lbl-c-ward">वार्ड सं.:</span>
+                                                <span class="id-value" id="card-ward">वार्ड 1</span>
+                                            </div>
+                                            <div class="id-detail-item">
+                                                <span class="id-label" id="lbl-c-role">श्रेणी:</span>
+                                                <span class="id-value" id="card-role">किसान एवं पशुपालक</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="id-card-footer">
+                                        <div>
+                                            <div style="font-size: 0.5rem; text-transform: uppercase;" id="lbl-c-no">नागरिक पहचान संख्या</div>
+                                            <span class="id-number" id="card-id-number">SP-9876-026</span>
+                                        </div>
+                                        <div class="id-signature">
+                                            <div class="id-sig-image" id="lbl-c-sig">राम सिंह</div>
+                                            <div style="font-size: 0.45rem; color: rgba(255,255,255,0.7);" id="lbl-c-des">सरपंच, सूर्यपुरा</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex gap-3">
+                                    <button class="btn btn-success-premium rounded-pill px-4" onclick="downloadCitizenIDCard()" id="btn-download-card"><i class="fa-solid fa-download me-1"></i> डाउनलोड करें (PNG)</button>
+                                    <button class="btn btn-outline-custom rounded-pill px-4" onclick="printCitizenIDCard()" id="btn-print-card"><i class="fa-solid fa-print me-1"></i> प्रिंट करें</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate Online Form System -->
+            <div class="row g-4">
+                <!-- Application Form -->
+                <div class="col-lg-5">
+                    <div class="glass-card p-4">
+                        <h4 class="fw-bold mb-4 text-success" id="cert-form-title">📑 प्रमाण पत्र ऑनलाइन आवेदन</h4>
+                        <p class="text-muted small mb-4" id="cert-form-sub">विभिन्न सरकारी प्रमाण पत्रों के लिए त्वरित डिजिटल आवेदन पत्र।</p>
+                        
+                        <form id="certificate-form" onsubmit="submitCertificateRequest(event)">
+                            <div class="mb-3">
+                                <label for="cert-type" class="form-label font-heading" id="lbl-cert-type">प्रमाण पत्र का प्रकार</label>
+                                <select class="form-select form-control-custom" id="cert-type" required>
+                                    <option value="निवास प्रमाण पत्र (Domicile)" id="opt-c1">निवास प्रमाण पत्र (Domicile Certificate)</option>
+                                    <option value="आय प्रमाण पत्र (Income)" id="opt-c2">आय प्रमाण पत्र (Income Certificate)</option>
+                                    <option value="जाति प्रमाण पत्र (Caste)" id="opt-c3">जाति प्रमाण पत्र (Caste Certificate)</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cert-citizen-name" class="form-label font-heading" id="lbl-cert-name">आवेदक का नाम</label>
+                                <input type="text" class="form-control form-control-custom" id="cert-citizen-name" placeholder="अपना पूरा नाम दर्ज करें" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cert-purpose" class="form-label font-heading" id="lbl-cert-purpose">आवेदन का कारण (Purpose)</label>
+                                <input type="text" class="form-control form-control-custom" id="cert-purpose" placeholder="उदा: छात्रवृत्ति आवेदन हेतु / सरकारी नौकरी" required>
+                            </div>
+                            <button type="submit" class="btn btn-success-premium w-100 py-2.5 mt-2" id="btn-submit-cert">आवेदन सबमिट करें</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Applications status live tracker -->
+                <div class="col-lg-7">
+                    <div class="glass-card p-4 h-100">
+                        <h4 class="fw-bold mb-4 text-success" id="cert-tracker-title">📋 डिजिटल प्रमाण-पत्र ट्रैकर</h4>
+                        <p class="text-muted small mb-4" id="cert-tracker-sub">आपके द्वारा सबमिट किए गए आवेदनों की लाइव स्थिति। (डेमो के लिए आवेदन दर्ज करने के 30 सेकंड बाद 'issued' हो जायेगा, जांचें!)</p>
+                        
+                        <div class="table-responsive">
+                            <table class="table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" id="th-c-id">आवेदन ID</th>
+                                        <th scope="col" id="th-c-type">प्रकार</th>
+                                        <th scope="col" id="th-c-name">नाम</th>
+                                        <th scope="col" id="th-c-status">प्रगति</th>
+                                        <th scope="col" id="th-c-action">दस्तावेज</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="certificate-tracker-rows">
+                                    <!-- Injected dynamically by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- --- Footer --- -->
+    <footer class="text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-1" id="footer-copy">© 2026 सूर्यपुरा ग्राम विकास डिजिटल पोर्टल. सुरक्षित, उन्नत एवं सशक्त भारत.</p>
+            <p class="text-muted small mb-0" id="footer-sub">विकसित भारत - डिजिटल ग्राम पहल | ग्राम पंचायत सूर्यपुरा, राजस्थान</p>
+        </div>
+    </footer>
+
+    <!-- --- Mobile Bottom Navigation (Native App feel) --- -->
+    <div class="mobile-bottom-nav d-lg-none">
+        <a href="#home" class="mobile-nav-item active" id="m-nav-home" onclick="switchTab('home')">
+            <i class="fa-solid fa-house"></i>
+            <span id="m-lbl-home">होम</span>
+        </a>
+        <a href="#dairy" class="mobile-nav-item" id="m-nav-dairy" onclick="switchTab('dairy')">
+            <i class="fa-solid fa-cow"></i>
+            <span id="m-lbl-dairy">डेयरी/कृषि</span>
+        </a>
+        <a href="#education" class="mobile-nav-item" id="m-nav-education" onclick="switchTab('education')">
+            <i class="fa-solid fa-school"></i>
+            <span id="m-lbl-edu">शिक्षा</span>
+        </a>
+        <a href="#infra" class="mobile-nav-item" id="m-nav-infra" onclick="switchTab('infra')">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span id="m-lbl-infra">ग्राम मार्ग</span>
+        </a>
+        <a href="#panchayat" class="mobile-nav-item" id="m-nav-panchayat" onclick="switchTab('panchayat')">
+            <i class="fa-solid fa-landmark"></i>
+            <span id="m-lbl-ep">ई-पंचायत</span>
+        </a>
+    </div>
+
+    <!-- --- Citizen Login Modal --- -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-glass border-0">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h5 class="modal-title fw-bold text-success" id="loginModalLabel">🔑 नागरिक लॉगिन (Citizen Login)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <form id="login-form" onsubmit="handleCitizenLogin(event)">
+                        <div class="mb-3">
+                            <label for="login-id" class="form-label font-heading" id="lbl-log-id">डिजिटल नागरिक ID (या आधार संख्या)</label>
+                            <input type="text" class="form-control form-control-custom numbers-font" id="login-id" placeholder="SP-XXXX-XXX या आधार के अंतिम 4 अंक" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-pin" class="form-label font-heading" id="lbl-log-pin">गोपनीय सुरक्षा पिन (PIN)</label>
+                            <input type="password" class="form-control form-control-custom numbers-font" id="login-pin" maxlength="4" placeholder="4 अंकों का पिन दर्ज करें" required>
+                        </div>
+                        <button type="submit" class="btn btn-success-premium w-100 py-2.5 mt-3" id="btn-log-submit">सत्यापित करें एवं प्रवेश करें</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Web App Script -->
+    <script src="app.js"></script>
+</body>
+</html>
